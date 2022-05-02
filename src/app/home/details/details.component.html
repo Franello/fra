@@ -1,0 +1,33 @@
+<ng-template ngIf="receivedDataType" #user>
+    <button (click)="closeDetail()">Close</button>
+    <div class="detail">
+        <h2 #user>{{receivedData.name}}{{receivedData.username}}</h2>
+        <h4>Email: </h4>
+        <h4 #user>{{receivedData.email}}</h4>
+        <h4>Address: </h4>
+        <h4 #user>{{receivedData.address}}</h4>
+        <h4>Phone: </h4>
+        <h4 #user>{{receivedData.phone}}</h4>
+        <h4>Website: </h4>
+        <h4 #user>{{receivedData.website}}</h4>
+        <h3>Company: </h3>
+        <h4>Name: </h4>
+        <h4 #user>{{receivedData.company.name}}</h4>
+        <h4>CatchPhrase: </h4>
+        <h4 #user>{{receivedData.company.catchPhrase}}</h4>
+        <h4>Base: </h4>
+        <h4 #user>{{receivedData.company.bs}}</h4>
+    </div>
+</ng-template>
+<ng-template #comment>
+    <div class="detail">
+        <h2 #comment>{{receivedData.name}}</h2>
+        <h4>Email: </h4>
+        <h4 #comment>{{receivedData.email}}</h4>
+        <h4>Body: </h4>
+        <h4 #comment>{{receivedData.body}}</h4>
+    </div>
+</ng-template>
+
+<ng-template #album></ng-template>
+<ng-template #photo></ng-template>

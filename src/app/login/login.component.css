@@ -1,0 +1,22 @@
+h1,
+label {
+    text-align: center;
+}
+
+input {
+    width: 300px;
+}
+
+.center-block {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+button {
+    width: 300px;
+}
+
+form {
+    margin-top: 150px;
+}

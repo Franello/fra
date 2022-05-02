@@ -1,0 +1,139 @@
+<app-details *ngIf="isDetailOpen" [detail]="isDetailOpen" (detail)="isDetailOpen=$event" [receivedData]="selectedData" [receivedDataType]="selectedDataType"></app-details>
+<div [class.detail-bkg]="isDetailOpen">
+    <mat-tab-group mat-align-tabs="center">
+        <mat-tab label="Users">
+            <h1>Users</h1>
+            <div class="album py-5" *ngFor="let user of loadUsers, let  i = index" style="width:25%; display: inline-block; text-align: center ">
+                <div class="container ">
+                    <div class="row ">
+                        <div class="col ">
+                            <div class="card shadow-sm ">
+                                <h4> {{user.name}} {{user.username}}</h4>
+
+                                <div class="card-body ">
+                                    <p class="card-text ">{{user.email}}</p>
+                                    <div class="d-flex justify-content-between ">
+
+                                        <a (click)="showDetail(user, 0)">
+                                            <h2> Details </h2>
+                                        </a>
+                                        <mat-icon (click)="setUserToLocalStorage(i) ">stars</mat-icon>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </mat-tab>
+
+        <mat-tab label=" Comments ">
+            <h1>Comments</h1>
+            <div class="album py-5 " *ngFor="let comment of loadComments| slice:0:20 let x=index " style="width:25%; display: inline-block; text-align: center ">
+                <div class="container ">
+                    <div class="row ">
+                        <div class="col ">
+                            <div class="card shadow-sm ">
+                                <h4> {{comment.name}}</h4>
+
+                                <div class="card-body ">
+                                    <p class="card-text ">{{comment.email}}</p>
+                                    <div class="d-flex justify-content-between ">
+                                        <a (click)="showDetail(comment, 1)">
+                                            <h2> Details </h2>
+                                        </a>
+                                        <mat-icon (click)="setCommentToLocalStorage(x) ">stars</mat-icon>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+
+        <mat-tab label="Albums ">
+            <h1>Albums</h1>
+
+            <div class="album py-5 " *ngFor="let album of loadAlbums| slice:0:20 let y=index " style="width:25%; display: inline-block; text-align: center ">
+                <div class="container ">
+                    <div class="row ">
+                        <div class="col ">
+                            <div class="card shadow-sm ">
+                                <h4> {{album.id}}</h4>
+
+                                <div class="card-body">
+                                    <p class="card-text">{{album.title}}</p>
+                                    <div class="d-flex justify-content-between ">
+                                        <a (click)="showDetail(album, 2)">
+                                            <h2> Details </h2>
+                                        </a>
+                                        <mat-icon (click)="setAlbumToLocalStorage(y) ">stars</mat-icon>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+
+        <mat-tab label="Photos ">
+            <h1>Photos</h1>
+            <div class="album py-5 " *ngFor="let photo of loadPhotos| slice:0:20 let z=index " style="width:25%; display: inline-block; text-align: center ">
+
+
+                <div class="container ">
+                    <div class="row ">
+                        <div class="col ">
+                            <div class=" card shadow-sm ">
+                                <img src="{{photo.url}} ">
+
+                                <div class="card-body ">
+                                    <p class="card-text ">{{photo.title}}</p>
+                                    <div class="d-flex justify-content-between ">
+                                        <a (click)="showDetail(photo, 3)">
+                                            <h2> Details </h2>
+                                        </a>
+                                        <mat-icon (click)="setPhotoToLocalStorage(z) ">stars</mat-icon>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+
+        <mat-tab label="Favorites ">
+            <h1>Favorites</h1>
+            <div class="album py-5 " *ngFor="let li of lists| slice:0:20" style="width:25%; display: inline-block; text-align: center ">
+                <div class="container ">
+                    <div class="row ">
+                        <div class="col ">
+                            <div class=" card shadow-sm ">
+                                <img src="{{li.url}} ">
+                                <p>{{li.title}} {{li.name}}</p>
+
+                                <div class="card-body ">
+                                    <p class="card-text "></p>
+                                    <div class="d-flex justify-content-between ">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>
+<div>
+    <button mat-fab color="primary" class="del" aria-label="Example icon button with a trash icon">
+          <mat-icon [routerLink]="''">logout</mat-icon>
+        </button>
+</div>

@@ -1,0 +1,30 @@
+    img {
+        height: 100px;
+        width: 100px
+    }
+    
+    .card {
+        background-color: rgb(37, 36, 36);
+    }
+    
+    .card {
+        height: 200px;
+    }
+    
+    a {
+        margin-left: 130px
+    }
+    
+    .del {
+        margin-top: 90%;
+        position: fixed;
+    }
+    
+    .detail-bkg {
+        filter: blur(8px);
+        -webkit-filter: blur(8px);
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
