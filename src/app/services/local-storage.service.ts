@@ -13,7 +13,7 @@ export class LocalStorageService {
   constructor () {
     this.something = Object.create( null );
   }
-  
+  value:any[]= [];
       
       setToLocalStorage<T extends serializable>(key:string , value:T): BehaviorSubject<T> {
           localStorage.setItem(key, JSON.stringify(value));  

@@ -77,16 +77,16 @@ export class HomeComponent implements OnInit {
     }
   
   setUserToLocalStorage(i:number){
-      this.localStorageService.setToLocalStorage(this.loadUsers[i].name, this.loadUsers[i])
+      this.localStorageService.setToLocalStorage("user", this.loadUsers[i])
   }
   setAlbumToLocalStorage(y:number){
-      this.localStorageService.setToLocalStorage(this.loadAlbums[y].title, this.loadAlbums[y])
+      this.localStorageService.setToLocalStorage("title", this.loadAlbums[y])
   }
   setCommentToLocalStorage(x:number){
-      this.localStorageService.setToLocalStorage(this.loadComments[x].name, this.loadComments[x])
+      this.localStorageService.setToLocalStorage("comment", this.loadComments[x])
   }
   setPhotoToLocalStorage(z:number){
-      this.localStorageService.setToLocalStorage(this.loadPhotos[z].title, this.loadPhotos[z])
+      this.localStorageService.setToLocalStorage("photo", this.loadPhotos[z])
   }
   
    getAllValues(): Array<any>
