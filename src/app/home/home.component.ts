@@ -36,21 +36,25 @@ export class HomeComponent implements OnInit {
 
   loadUsers:User[]=[]; 
   
-  loadPhotos:Photos[]=[];
-
-  filtredPhotos:any[]= []; 
+  loadPhotos:Photos[]=[]; 
 
   loadComments: Comment[]=[]; 
 
   loadAlbums:Album[]=[];
-
-  lists:any[]= [];
 
   isDetailOpen: boolean =false ; 
 
   selectedData: any;
 
   selectedDataType: DataType = 0;
+
+  listOfUsers:any[]=[]; 
+
+  listOfPhotos:any[]= []; 
+  
+  listOfComments:any[]= []; 
+
+  listOfAlbums:any[]= []; 
 
   ngOnInit(): void {
     this.userService.getUser().subscribe(
@@ -67,12 +71,14 @@ export class HomeComponent implements OnInit {
     this.albumService.getAlbum().subscribe(
       album =>{this.loadAlbums=album}
       )
-      
-      
-      this.filtredPhotos = this.loadPhotos.slice(0, 20); 
 
-    this.lists = this.getAllValues(); 
+    this.listOfUsers = this.localStorageService.getToLocalStorage("user"); 
+    
+    this.listOfPhotos = this.localStorageService.getToLocalStorage("photo"); 
 
+    this.listOfComments = this.localStorageService.getToLocalStorage("comment");
+
+    this.listOfAlbums = this.localStorageService.getToLocalStorage("album") ; 
   
     }
   
@@ -80,7 +86,7 @@ export class HomeComponent implements OnInit {
       this.localStorageService.setToLocalStorage("user", this.loadUsers[i])
   }
   setAlbumToLocalStorage(y:number){
-      this.localStorageService.setToLocalStorage("title", this.loadAlbums[y])
+      this.localStorageService.setToLocalStorage("album", this.loadAlbums[y])
   }
   setCommentToLocalStorage(x:number){
       this.localStorageService.setToLocalStorage("comment", this.loadComments[x])
@@ -88,29 +94,18 @@ export class HomeComponent implements OnInit {
   setPhotoToLocalStorage(z:number){
       this.localStorageService.setToLocalStorage("photo", this.loadPhotos[z])
   }
-  
-   getAllValues(): Array<any>
-{
-  var list = new Array<any>();
-  for (var i = 0; i < localStorage.length;i++)
-  {
-    var key: any = localStorage.key(i);
-    var value = localStorage.getItem(key);
-    if(value){
-        var parsedValue = JSON.parse(value)
-    }
-    list.push(parsedValue);
-  }
-  return list;
-} 
 
+  getAllFromLocalStorage(){
+    this.listOfAlbums;
+    this.listOfComments;
+    this.listOfPhotos;
+    this.listOfUsers; 
+  }
   showDetail(data: any, dataType: DataType) {
     this.selectedData = data;
     this.selectedDataType = dataType;
     this.isDetailOpen= true; 
   }
-
-
   }
 
 

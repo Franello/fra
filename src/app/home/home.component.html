@@ -109,19 +109,88 @@
             </div>
         </mat-tab>
 
-        <mat-tab label="Favorites ">
-            <h1>Favorites</h1>
-            <div class="album py-5 " *ngFor="let li of lists| slice:0:20" style="width:25%; display: inline-block; text-align: center ">
+        <mat-tab label="Favorites " (click)="getAllFromLocalStorage()">
+
+            <h1 style="text-align: center;" *ngIf="listOfUsers.length>0">Users</h1>
+            <div class="album py-5 " *ngFor="let liu of listOfUsers" style="width:25%; display: inline-block; text-align: center ">
+                <div class="container ">
+                    <div class="row ">
+                        <div class="col ">
+                            <div class="card shadow-sm ">
+                                <h4> {{liu.name}} {{liu.username}}</h4>
+
+                                <div class="card-body ">
+                                    <p class="card-text ">{{liu.email}}</p>
+                                    <div class="d-flex justify-content-between ">
+
+                                        <a (click)="showDetail(liu, 0)">
+                                            <h2> Details </h2>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h1 style="text-align: center;" *ngIf="listOfPhotos.length>0">Photo</h1>
+            <div class="album py-5 " *ngFor="let lip of listOfPhotos" style="width:25%; display: inline-block; text-align: center ">
                 <div class="container ">
                     <div class="row ">
                         <div class="col ">
                             <div class=" card shadow-sm ">
-                                <img src="{{li.url}} ">
-                                <p>{{li.title}} {{li.name}}</p>
+                                <img src="{{lip.url}} ">
 
                                 <div class="card-body ">
-                                    <p class="card-text "></p>
+                                    <p class="card-text ">{{lip.title}}</p>
                                     <div class="d-flex justify-content-between ">
+                                        <a (click)="showDetail(lip, 3)">
+                                            <h2> Details </h2>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h1 style="text-align: center;" *ngIf="listOfComments.length>0">Comment</h1>
+            <div class="album py-5 " *ngFor="let lic of listOfComments" style="width:25%; display: inline-block; text-align: center ">
+                <div class="container ">
+                    <div class="row ">
+                        <div class="col ">
+                            <div class="card shadow-sm ">
+                                <h4> {{lic.name}}</h4>
+
+                                <div class="card-body ">
+                                    <p class="card-text ">{{lic.email}}</p>
+                                    <div class="d-flex justify-content-between ">
+                                        <a (click)="showDetail(lic, 1)">
+                                            <h2> Details </h2>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h1 style="text-align: center;" *ngIf="listOfAlbums.length>0">Albums</h1>
+
+            <div class="album py-5 " *ngFor="let lia of listOfAlbums " style="width:25%; display: inline-block; text-align: center ">
+                <div class="container ">
+                    <div class="row ">
+                        <div class="col ">
+                            <div class="card shadow-sm ">
+                                <h4> {{lia.id}}</h4>
+
+                                <div class="card-body">
+                                    <p class="card-text">{{lia.title}}</p>
+                                    <div class="d-flex justify-content-between ">
+                                        <a (click)="showDetail(lia, 2)">
+                                            <h2> Details </h2>
+                                        </a>
+
                                     </div>
                                 </div>
                             </div>
@@ -130,10 +199,13 @@
                 </div>
             </div>
         </mat-tab>
+        <mat-tab disabled>
+            <ng-template mat-tab-label>
+                <button mat-icon-button [routerLink]="''">
+               <p style="color: rgb(174, 76, 174); ">Logout</p>
+            </button>
+            </ng-template>
+        </mat-tab>
     </mat-tab-group>
-</div>
-<div>
-    <button mat-fab color="primary" class="del" aria-label="Example icon button with a trash icon">
-          <mat-icon [routerLink]="''">logout</mat-icon>
-        </button>
+
 </div>
