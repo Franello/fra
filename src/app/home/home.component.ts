@@ -70,37 +70,35 @@ export class HomeComponent implements OnInit {
     )
     this.albumService.getAlbum().subscribe(
       album =>{this.loadAlbums=album}
-      )
+    )
+      this.listOfUsers = this.localStorageService.getToLocalStorage("user");
+      this.listOfAlbums = this.localStorageService.getToLocalStorage("album") ; 
+      this.listOfComments = this.localStorageService.getToLocalStorage("comment");
+      this.listOfPhotos = this.localStorageService.getToLocalStorage("photo"); 
 
-    this.listOfUsers = this.localStorageService.getToLocalStorage("user"); 
-    
-    this.listOfPhotos = this.localStorageService.getToLocalStorage("photo"); 
 
-    this.listOfComments = this.localStorageService.getToLocalStorage("comment");
 
-    this.listOfAlbums = this.localStorageService.getToLocalStorage("album") ; 
-  
     }
   
   setUserToLocalStorage(i:number){
-      this.localStorageService.setToLocalStorage("user", this.loadUsers[i])
+      this.localStorageService.setToLocalStorage("user", this.loadUsers[i]);
+     
   }
   setAlbumToLocalStorage(y:number){
-      this.localStorageService.setToLocalStorage("album", this.loadAlbums[y])
+      this.localStorageService.setToLocalStorage("album", this.loadAlbums[y]);
+      this.listOfAlbums = this.localStorageService.getToLocalStorage("album") ; 
+
   }
   setCommentToLocalStorage(x:number){
-      this.localStorageService.setToLocalStorage("comment", this.loadComments[x])
+      this.localStorageService.setToLocalStorage("comment", this.loadComments[x]);
+      this.listOfComments = this.localStorageService.getToLocalStorage("comment");
+
   }
   setPhotoToLocalStorage(z:number){
-      this.localStorageService.setToLocalStorage("photo", this.loadPhotos[z])
+      this.localStorageService.setToLocalStorage("photo", this.loadPhotos[z]);
+      this.listOfPhotos = this.localStorageService.getToLocalStorage("photo"); 
   }
 
-  getAllFromLocalStorage(){
-    this.listOfAlbums;
-    this.listOfComments;
-    this.listOfPhotos;
-    this.listOfUsers; 
-  }
   showDetail(data: any, dataType: DataType) {
     this.selectedData = data;
     this.selectedDataType = dataType;

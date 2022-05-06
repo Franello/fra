@@ -1,5 +1,5 @@
+<button (click)="closeDetail()">Close</button>
 <div *ngIf="receivedDataType == 0">
-    <button (click)="closeDetail()">Close</button>
     <div class="detail">
         <h2>{{receivedData.name}}{{receivedData.username}}</h2>
         <h4>Email: </h4>
@@ -20,7 +20,6 @@
     </div>
 </div>
 <div *ngIf="receivedDataType == 1">
-    <button (click)="closeDetail()">Close</button>
     <div class="detail">
         <h2>{{receivedData.name}}</h2>
         <h4>Email: </h4>
@@ -31,7 +30,6 @@
 </div>
 
 <div *ngIf="receivedDataType == 2">
-    <button (click)="closeDetail()">Close</button>
     <div class="detail">
         <h4>Id: </h4>
         <h2>{{receivedData.albumId}}</h2>
